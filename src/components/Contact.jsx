@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
-import { useState } from 'react'
+import { useState ,useEffect,useRef} from 'react'
 import {
   Mail,
   Send,
@@ -59,6 +59,8 @@ const Contact = () => {
 const handleSubmit = async (event) => {
   event.preventDefault()
 
+  clearTimeout(statusTimer.current)
+
   setIsSubmitting(true)
   setStatus({ type: '', message: '' })
 
@@ -76,6 +78,10 @@ const handleSubmit = async (event) => {
         email: '',
         message: '',
       })
+
+      statusTimer.current = setTimeout(() => {
+        setStatus({ type: '', message: '' })
+      }, 4000)
     } else {
       setStatus({
         type: 'error',
