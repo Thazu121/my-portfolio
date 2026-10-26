@@ -26,8 +26,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-    value: 'thasliazzu@gmail',
-        href: 'mailto:thasliazzu@gmail.com',
+    value: 'thasleemapk2351@gmail.com',
+        href: 'mailto:thasleemapk2351@gmail.com',
 
     },
     {
@@ -56,7 +56,6 @@ const Contact = () => {
       setStatus({ type: '', message: '' })
     }
   }
-
 const handleSubmit = async (event) => {
   event.preventDefault()
 
@@ -66,28 +65,38 @@ const handleSubmit = async (event) => {
   try {
     const result = await submitContact(formData)
 
-    setStatus({
-      type: result.data?.emailSent ? 'success' : 'error',
-      message: result.message,
-    })
+    if (result.success && result.data?.emailSent) {
+      setStatus({
+        type: 'success',
+        message: result.message || 'Your message was sent successfully!',
+      })
 
-    if (result.success) {
       setFormData({
         name: '',
         email: '',
         message: '',
       })
+    } else {
+      setStatus({
+        type: 'error',
+        message:
+          result.message ||
+          'Your message could not be emailed. Please try again later.',
+      })
     }
   } catch (error) {
+    console.error('Contact form submission error:', error)
+
     setStatus({
       type: 'error',
-      message: error.message || 'Unable to submit your message.',
+      message:
+        error.message ||
+        'Failed to send your message. Please try again later.',
     })
   } finally {
     setIsSubmitting(false)
   }
 }
-
   const inputClasses =
     'w-full min-w-0 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white sm:text-base'
 
