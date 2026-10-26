@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
-import { useState ,useEffect,useRef} from 'react'
+import { useState ,useEffect} from 'react'
 import {
   Mail,
   Send,
@@ -44,6 +44,19 @@ const Contact = () => {
     },
   ]
 
+
+  useEffect(() => {
+  if (status.type !== 'success' || !status.message) return
+
+  const timer = setTimeout(() => {
+    setStatus({ type: '', message: '' })
+  }, 4000)
+
+  return () => clearTimeout(timer)
+}, [status.type, status.message])
+
+
+
   const handleChange = (event) => {
     const { name, value } = event.target
 
@@ -56,10 +69,9 @@ const Contact = () => {
       setStatus({ type: '', message: '' })
     }
   }
+
 const handleSubmit = async (event) => {
   event.preventDefault()
-
-  clearTimeout(statusTimer.current)
 
   setIsSubmitting(true)
   setStatus({ type: '', message: '' })
@@ -70,7 +82,8 @@ const handleSubmit = async (event) => {
     if (result.success && result.data?.emailSent) {
       setStatus({
         type: 'success',
-        message: result.message || 'Your message was sent successfully!',
+        message:
+          result.message || 'Your message was sent successfully!',
       })
 
       setFormData({
@@ -78,10 +91,6 @@ const handleSubmit = async (event) => {
         email: '',
         message: '',
       })
-
-      statusTimer.current = setTimeout(() => {
-        setStatus({ type: '', message: '' })
-      }, 4000)
     } else {
       setStatus({
         type: 'error',
@@ -103,6 +112,7 @@ const handleSubmit = async (event) => {
     setIsSubmitting(false)
   }
 }
+
   const inputClasses =
     'w-full min-w-0 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white sm:text-base'
 
