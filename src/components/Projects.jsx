@@ -1,16 +1,20 @@
 
 const projects = [
-  {
-    number: '01',
-    title: 'SpendWise',
-    type: 'Frontend Application',
-    description:
-      'A receipt and expense management application for tracking expenses, managing receipts, categorizing transactions, and monitoring spending through an interactive dashboard.',
-    technologies: [
-      'React',
-      'Redux Toolkit',
-      'Tailwind CSS',
-    ],
+ 
+{
+  number: '01',
+  title: 'SpendWise',
+  type: 'Full Stack Application',
+  description:
+    'A full-stack receipt and expense management application for tracking expenses, managing receipts, categorizing transactions, and monitoring spending through an interactive dashboard.',
+  technologies: [
+    'React',
+    'Redux Toolkit',
+    'Tailwind CSS',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+  ],
     live: 'https://receipt-expense-manager.vercel.app/',
   },
   {
