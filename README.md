@@ -1,16 +1,78 @@
-# React + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive personal portfolio built with React, Vite, and Tailwind CSS. It showcases my projects, technical skills, and contact information, with a backend-powered contact form.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Portfolio:** [View Live Website](https://my-portfolio-kappa-six-32.vercel.app/)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive design for desktop, tablet, and mobile
+- Projects and technical skills showcase
+- Light and dark mode
+- Redux Toolkit state management
+- Contact form integrated with a REST API
+- Form validation and submission feedback
+- Emerald-green themed user interface
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React, JavaScript (JSX)
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **State Management:** Redux Toolkit
+- **Icons:** Lucide React
+- **Deployment:** Vercel
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+```bash
+git clone YOUR_FRONTEND_REPOSITORY_URL
+cd portfolio-frontend
+npm install
+```
+
+### Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+For production, set `VITE_API_URL` to your deployed backend URL.
+
+> Vite exposes variables prefixed with `VITE_` to browser code. Never store private keys or secrets in these variables.
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Backend
+
+The contact form communicates with the [Portfolio Backend](https://portfolio-trld.onrender.com), which stores messages in MongoDB and sends email notifications.
+
+## Deployment
+
+The frontend is deployed on Vercel. Configure the `VITE_API_URL` environment variable in your Vercel project settings before deploying.
+
+## License
+
+This project is available for viewing and learning. Contact me before reusing substantial portions of the design or code.
